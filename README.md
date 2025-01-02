@@ -103,4 +103,4 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 
 ## Contact
 
-For any questions or inquiries, please contact [your-email@example.com](mailto:krishnashah131103@gmail.com).
+For any questions or inquiries, please contact [krishnashah131103@gmail.com](mailto:krishnashah131103@gmail.com).
