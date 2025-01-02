@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">{{ product.name }}</h1>
+        <div class="row">
+            <div class="col-md-6">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/400" class="img-fluid" alt="{{ product.name }}">
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <p><strong>Description:</strong> {{ product.description }}</p>
+                <p><strong>Price:</strong> ${{ product.price }}</p>
+                <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+                <p><strong>Category:</strong> {{ product.category }}</p>
+                <p><strong>Available:</strong> {{ product.available|yesno:"Yes,No" }}</p>
+                <form method="post" action="{% url 'place_order' product.uid %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="quantity">Order Quantity:</label>
+                        <input type="number" name="quantity" id="quantity" class="form-control" min="1" max="{{ product.quantity }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Place Order</button>
+                </form>
+                <a href="{% url 'product_edit' product.uid %}" class="btn btn-warning mt-3">Edit</a>
+                <a href="{% url 'product_delete' product.uid %}" class="btn btn-danger mt-3">Delete</a>
+                <a href="{% url 'product_list' %}" class="btn btn-secondary mt-3">Back to Product List</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
