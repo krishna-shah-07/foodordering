@@ -22,10 +22,10 @@
 <body>
     <div class="container">
         <h1 class="my-4">Food List</h1>
-        <a href="{% url 'product_add' %}" class="btn btn-primary mb-4">Add New Food Item</a>
+        <a href="{% url 'product_add' %}" class="btn btn-primary">Add New Food Item</a>
         <div class="row">
             {% for product in products %}
-                <div class="col-md-4">
+                <div class="col-md-4 mt-4">
                     <div class="card mb-4">
                         {% if product.image %}
                             <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
